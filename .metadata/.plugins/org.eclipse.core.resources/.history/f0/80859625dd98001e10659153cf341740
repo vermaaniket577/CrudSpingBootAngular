@@ -1,0 +1,54 @@
+package com.web.service;
+
+import java.util.List;  
+import org.springframework.beans.factory.annotation.Autowired;  
+import org.springframework.stereotype.Service;  
+import org.springframework.transaction.annotation.Transactional;
+
+import com.web.Repository.studentRepository;
+import com.web.model.Student;  
+
+  
+@Service  
+@Transactional  
+public  class studentServiceimpl  implements studentService {  
+   
+    @Autowired  
+    private studentRepository studentrepo;  
+      
+    @Override  
+    public boolean saveStudent(Student student) {  
+        return studentrepo.saveStudent(student);  
+    }  
+  
+    @Override  
+    public List<Student> getStudents() {  
+        return studentrepo.getStudents();  
+    }  
+  
+    @Override  
+    public boolean deleteStudent(Student student) {  
+        return studentrepo.deleteStudent(student);  
+    }  
+  
+    @Override  
+    public List<Student> getStudentByID(Student student) {  
+        return studentrepo.getStudentByID(student);  
+    }  
+    
+ // UPDATE
+    public Student updateStudent(int Id, Student studentDetails) {
+            Student student = studentrepo.findById(Id).get();
+            student.setName(studentDetails.getName());
+            student.setEmail(studentDetails.getEmail());
+            student.setBranch(studentDetails.getBranch());
+            
+            return studentrepo.save(student);                                
+    }
+  
+    @Override  
+    public boolean updateStudent(Student student) {  
+        return studentrepo.updateStudent(student);  
+    }  
+  
+}  

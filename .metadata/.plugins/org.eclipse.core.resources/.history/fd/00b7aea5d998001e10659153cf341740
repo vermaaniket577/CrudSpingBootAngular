@@ -1,0 +1,17 @@
+package com.web.Repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.web.model.Student;
+
+public interface studentRepository  {
+  
+
+  public boolean saveStudent(Student student);  
+  public List<Student> getStudents();  
+  public boolean deleteStudent(Student student);  
+  public List<Student> getStudentByID(Student student);  
+  public boolean updateStudent(Student student);  
+}  

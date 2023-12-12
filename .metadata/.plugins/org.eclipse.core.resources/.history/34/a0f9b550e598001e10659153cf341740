@@ -1,0 +1,53 @@
+package com.web.service;
+
+import java.util.List;  
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.web.Repository.studentRepository;
+import com.web.model.Student;
+
+import org.springframework.web.bind.annotation.RequestMapping;  
+ 
+  
+
+ @Service
+@RequestMapping(value="/api")  
+public class studentServiceimpl {  
+      
+    @Autowired  
+    studentRepository studentRepo;  
+ 
+ // CREATE 
+    public Student createStudent(Student student) {
+        return studentRepo.save(student);
+    }
+
+    // READ
+    public List<Student> getStudents() {
+        return studentRepo.findAll();
+    }
+
+    // DELETE
+    public  void deleteStudent(int id) {
+        studentRepo.deleteById(id);
+
+    }
+ // UPDATE
+    public Student updateStudent(Student studentdetails) {
+            Student student = studentRepo.findById(Id).get();
+            student.setName(studentdetails.getName());
+            student.setEmail(studentdetails.getEmail());
+            student.setBranch(studentdetails.getBranch());
+            
+            return studentRepo.save(student);                                
+    }
+
+	public List<Student> getStudentByID(Student student) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	
+}

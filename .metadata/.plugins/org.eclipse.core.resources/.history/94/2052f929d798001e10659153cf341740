@@ -1,0 +1,5 @@
+package com.web.Repository;
+
+public class studentRepository extends jpare {
+
+}
